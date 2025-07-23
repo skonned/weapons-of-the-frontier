@@ -1,1 +1,34 @@
-<h1>Home</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fantastic Frontier Weapons</title>
+    <style>
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .ranged { background-color: #4CAF50; }  /* Green */
+        .magic  { background-color: #2196F3; }  /* Blue */
+        .melee  { background-color: #f44336; }  /* Red */
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <!-- Links styled as buttons -->
+        <a href="{{ url_for('ranged') }}" class="button ranged">Ranged</a>
+        <a href="{{ url_for('magic') }}"  class="button magic">Magic</a>
+        <a href="{{ url_for('melee') }}"  class="button melee">Melee</a>
+    </div>
+</body>
+</html>
