@@ -1,0 +1,49 @@
+/* static/css/style.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url("../images/background.jpg"); /* path to image */
+  background-size: cover;      /* makes sure it covers the whole screen */
+  background-position: center; /* center it nicely */
+  background-repeat: no-repeat;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  backdrop-filter: brightness(0.9); /* darken slightly for text */
+}
+
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8rem;
+}
+
+.button-grid {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.weapon-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  color: white;
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.weapon-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}

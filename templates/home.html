@@ -1,34 +1,19 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Fantastic Frontier Weapons</title>
-    <style>
-        .button-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 50px;
-        }
-        .button {
-            padding: 15px 30px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .ranged { background-color: #4CAF50; }  /* Green */
-        .magic  { background-color: #2196F3; }  /* Blue */
-        .melee  { background-color: #f44336; }  /* Red */
-    </style>
+  <meta charset="UTF-8">
+  <title>Fantastic Frontier Weapons</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="button-container">
-        <!-- Links styled as buttons -->
-        <a href="{{ url_for('ranged') }}" class="button ranged">Ranged</a>
-        <a href="{{ url_for('magic') }}"  class="button magic">Magic</a>
-        <a href="{{ url_for('melee') }}"  class="button melee">Melee</a>
+  <div class="container">
+    <h1>Weapons Of The Frontier</h1>
+    <div class="button-grid">
+      <a href="/category/Magic" class="weapon-button">Magic</a>
+      <a href="/category/Melee" class="weapon-button">Melee</a>
+      <a href="/category/Ranged" class="weapon-button">Ranged</a>
     </div>
+  </div>
 </body>
 </html>
