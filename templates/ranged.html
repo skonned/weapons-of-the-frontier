@@ -1,12 +1,20 @@
-<!-- ranged.html -->
+<!-- templates/magic.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ranged Weapons</title>
+  <meta charset="UTF-8">
+  <title>Magic Weapons</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Ranged Weapons</h1>
-    <p>List guns and other ranged weapons here.</p>
-    <a href="home.html">Back to Home</a>
+  <div class="container">
+    <h1>Magic Weapons</h1>
+    <ul>
+      {% for weapon in weapons %}
+        <li>{{ weapon[1] }}</li> <!-- weapon[1] is the name -->
+      {% endfor %}
+    </ul>
+    <a href="/" class="weapon-button">Back to Home</a>
+  </div>
 </body>
 </html>
