@@ -1,0 +1,20 @@
+<!-- templates/unique.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unique Weapons</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Unique Weapons</h1>
+    <ul>
+      {% for weapon in weapons %}
+        <li>{{ weapon[1] }}</li> <!-- weapon[1] is the name -->
+      {% endfor %}
+    </ul>
+    <a href="/" class="weapon-button">Back to Home</a>
+  </div>
+</body>
+</html>

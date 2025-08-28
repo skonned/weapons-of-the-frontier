@@ -24,5 +24,15 @@ def ranged():
     return render_template('ranged.html', title='RANGED')
 
 
+@app.route('/hybrid')
+def hybrid():
+    return render_template('hybrid.html', title="HYBRID")
+
+
+@app.route('/unique')
+def unique():
+    return render_template('unique.html', title="UNIQUE")
+
+
 if __name__ == '__main__':
     app.run(debug=True)
