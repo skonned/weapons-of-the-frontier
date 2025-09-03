@@ -1,10 +1,11 @@
 /* static/css/style.css */
 
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background-image: url("../images/background.jpg"); /* path to image */
-  background-size: cover;      /* makes sure it covers the whole screen */
+  background-size: cover; /* makes sure it covers the whole screen */
   background-position: center; /* center it nicely */
   background-repeat: no-repeat;
   color: #fff;
@@ -20,10 +21,12 @@ body {
   text-align: center;
 }
 
+
 h1 {
   font-size: 2.5rem;
   margin-bottom: 3rem;
 }
+
 
 .button-grid {
   display: flex;
@@ -31,6 +34,7 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
 }
+
 
 .weapon-button {
   padding: 1rem 2rem;
@@ -43,7 +47,56 @@ h1 {
   transition: transform 0.2s ease;
 }
 
+
 .weapon-button:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
+
+
+/* New styles for weapon gallery */
+.weapon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px; /* space between weapons */
+  list-style: none;
+  padding: 0;
+  justify-content: center; /* center the grid */
+}
+
+
+.weapon-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px; /* adjust as needed */
+  margin-bottom: 16px;
+}
+
+
+.weapon-image {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 8px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .button-grid {
+    gap: 2rem;
+  }
+  .weapon-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+
+/* --- IGNORE ---
+These comments are just to separate the different files that were recently edited.
+Do not include these comments in your files.
