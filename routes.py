@@ -85,5 +85,12 @@ def unique():
     return render_template('unique.html', title="UNIQUE", weapons=weapons)
 
 
+@app.route('/weapon/<weapon_name>')
+def weapon(weapon_name):
+    # Improve this by looking up weapon details in a database or dictionary
+    # For now, just render a template with the weapon name
+    return render_template('weapon.html', weapon_name=weapon_name)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

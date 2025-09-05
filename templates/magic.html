@@ -12,13 +12,15 @@
     <ul class="weapon-list">
       {% for weapon in weapons %}
         <li>
-          <img 
-            src="{{ url_for('static', filename='images/magic/' ~ weapon[0]) }}" 
-            alt="{{ weapon[1] }}" 
-            class="weapon-image"
-            width="100"
-            height="100"
-          >
+          <a href="{{ url_for('weapon', weapon_name=weapon[1]) }}" class="weapon-link">
+            <img 
+              src="{{ url_for('static', filename='images/magic/' ~ weapon[0]) }}" 
+              alt="{{ weapon[1] }}" 
+              class="weapon-image"
+              width="100"
+              height="100"
+            >
+          </a>
           <span>{{ weapon[1] }}</span>
         </li>
       {% endfor %}
