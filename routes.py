@@ -1,8 +1,28 @@
-from flask import Flask, render_template
+''' This is the routes file for my weapons website. '''
+import sqlite3
+from flask import Flask, render_template, g
 import os
+from urllib.parse import unquote
 
 
 app = Flask(__name__)
+
+
+DATABASE = os.path.join(os.path.dirname(__file__), 'weapons.db')
+
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+    return db
+
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
 
 @app.route('/')
@@ -87,9 +107,21 @@ def unique():
 
 @app.route('/weapon/<weapon_name>')
 def weapon(weapon_name):
-    # Improve this by looking up weapon details in a database or dictionary
-    # For now, just render a template with the weapon name
-    return render_template('weapon.html', weapon_name=weapon_name)
+    display_name = unquote(weapon_name).replace('_', ' ')
+    cur = get_db().cursor()
+    cur.execute("SELECT * FROM weapons WHERE name = ?", (display_name,))
+    row = cur.fetchone()
+    if row:
+        weapon_data = {
+            "name": row[0],
+            "image": row[1],
+            "type": row[2],
+            "description": row[3],
+            "damage": row[4]
+        }
+    else:
+        weapon_data = None
+    return render_template('weapon.html', weapon_name=display_name, weapon=weapon_data)
 
 
 if __name__ == '__main__':

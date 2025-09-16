@@ -8,7 +8,18 @@
 <body>
   <div class="container">
     <h1>{{ weapon_name }}</h1>
-    <!-- Add more weapon details here -->
+    {% if weapon %}
+      <img src="{{ url_for('static', filename='images/' ~ weapon.type|lower ~ '/' ~ weapon.image) }}"
+           alt="{{ weapon.name }}"
+           class="weapon-image"
+           width="200">
+      <p><strong>Class:</strong> {{ weapon.type }}</p>
+      <p><strong>Damage:</strong> {{ weapon.damage }}</p>
+      <p><strong>Type:</strong> {{ weapon.class }} </p>
+      <p>{{ weapon.description }}</p>
+    {% else %}
+      <p>Weapon data not found.</p>
+    {% endif %}
     <a href="/" class="weapon-button">Back to Home</a>
   </div>
 </body>

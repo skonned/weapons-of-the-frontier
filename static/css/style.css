@@ -5,7 +5,7 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background-image: url("../images/background.jpg"); /* path to image */
-  background-size: cover; /* makes sure it covers the whole screen */
+  background-size: cover; /* making sure it covers the whole screen */
   background-position: center; /* center it nicely */
   background-repeat: no-repeat;
   color: #fff;
@@ -97,6 +97,4 @@ h1 {
 }
 
 
-/* --- IGNORE ---
-These comments are just to separate the different files that were recently edited.
-Do not include these comments in your files.
+/* End of static/css/style.css */
