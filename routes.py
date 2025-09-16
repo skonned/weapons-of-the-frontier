@@ -40,7 +40,11 @@ def magic():
     weapons = []
     for filename in weapon_files:
         # Remove extension and replace underscores with spaces for display
-        name = os.path.splitext(filename)[0].replace('_', ' ').replace('%27', "'")
+        name = (
+            os.path.splitext(filename)[0]
+            .replace('_', ' ')
+            .replace('%27', "'")
+        )
         weapons.append((filename, name))
     return render_template('magic.html', title='MAGIC', weapons=weapons)
     
@@ -55,7 +59,11 @@ def melee():
     weapons = []
     for filename in weapon_files:
         # Remove extension and replace underscores with spaces for display
-        name = os.path.splitext(filename)[0].replace('_', ' ').replace('%27', "'")
+        name = (
+            os.path.splitext(filename)[0]
+            .replace('_', ' ')
+            .replace('%27', "'")
+        )
         weapons.append((filename, name))
     return render_template('melee.html', title='MELEE', weapons=weapons)
 
@@ -70,7 +78,11 @@ def ranged():
     weapons = []
     for filename in weapon_files:
         # Remove extension and replace underscores with spaces for display
-        name = os.path.splitext(filename)[0].replace('_', ' ').replace('%27', "'")
+        name = (
+            os.path.splitext(filename)[0]
+            .replace('_', ' ')
+            .replace('%27', "'")
+        )
         weapons.append((filename, name))
     return render_template('ranged.html', title='RANGED', weapons=weapons)
 
@@ -80,12 +92,19 @@ def hybrid():
     # Path to the hybrid images folder
     hybrid_folder = os.path.join(app.static_folder, 'images', 'hybrid')
     # List all image files in the hybrid folder
-    weapon_files = [f for f in os.listdir(hybrid_folder) if f.endswith('.webp')]
+    weapon_files = [
+        f for f in os.listdir(hybrid_folder)
+        if f.endswith('.webp')
+    ]
     # Create display names from filenames
     weapons = []
     for filename in weapon_files:
         # Remove extension and replace underscores with spaces for display
-        name = os.path.splitext(filename)[0].replace('_', ' ').replace('%27', "'")
+        name = (
+            os.path.splitext(filename)[0]
+            .replace('_', ' ')
+            .replace('%27', "'")
+        )
         weapons.append((filename, name))
     return render_template('hybrid.html', title="HYBRID", weapons=weapons)
 
@@ -100,7 +119,11 @@ def unique():
     weapons = []
     for filename in weapon_files:
         # Remove extension and replace underscores with spaces for display
-        name = os.path.splitext(filename)[0].replace('_', ' ').replace('%27', "'")
+        name = (
+            os.path.splitext(filename)[0]
+            .replace('_', ' ')
+            .replace('%27', "'")
+        )
         weapons.append((filename, name))
     return render_template('unique.html', title="UNIQUE", weapons=weapons)
 
@@ -121,7 +144,11 @@ def weapon(weapon_name):
         }
     else:
         weapon_data = None
-    return render_template('weapon.html', weapon_name=display_name, weapon=weapon_data)
+    return render_template(
+        'weapon.html',
+        weapon_name=display_name,
+        weapon=weapon_data
+    )
 
 
 if __name__ == '__main__':
