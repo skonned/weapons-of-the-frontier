@@ -11,7 +11,7 @@
     {% if weapon %}
       <div class="weapon-detail-card">
         <div class="weapon-detail-header">
-          <img src="{{ url_for('static', filename='images/' ~ weapon['type']|lower ~ '/' ~ weapon['image']) }}" alt="{{ weapon['name'] }}" class="weapon-image">
+          <img src="{{ url_for('static', filename='images/' ~ weapon['class']|lower ~ '/' ~ weapon['image']) }}" alt="{{ weapon['name'] }}" class="weapon-image">
           <div class="weapon-detail-info">
             <h2>{{ weapon['name'] }}</h2>
             <p><strong>Class:</strong> {{ weapon['class'] }}</p>
