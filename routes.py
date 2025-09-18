@@ -209,5 +209,6 @@ def search():
     results = cur.fetchall()
     return render_template('search_results.html', query=query, results=results)
 
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Search Results{% endblock %}
+{% block content %}
+  <div class="container">
+    <h2>Search Results{% if query %} for "{{ query }}"{% endif %}</h2>
+    {% if results and results|length > 0 %}
+      <ul class="weapon-list search-results-list">
+        {% for weapon in results %}
+          <li>
+            <a href="{{ url_for('weapon', weapon_name=weapon['name'].replace(' ', '_')) }}" class="weapon-link search-result-link">
+              <img src="{{ url_for('static', filename='images/' ~ weapon['class']|lower ~ '/' ~ weapon['image']) }}"
+                   alt="{{ weapon['name'] }}"
+                   class="weapon-image search-result-image">
+              <span class="search-result-name">{{ weapon['name'] }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No weapons found matching your search.</p>
+    {% endif %}
+  </div>
+{% endblock %}
