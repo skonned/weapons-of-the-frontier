@@ -67,7 +67,7 @@
                   {% if src['price'] %} (Price: {{ src['price'] }}){% endif %}
                   {% if src['drop_chance'] %} (Drop Chance: {{ src['drop_chance'] }}%) {% endif %}
                   {% if source_locations[src['source_id']] %}
-                    <br>Locations:
+                    <br>Location(s):
                     <ul>
                       {% for loc in source_locations[src['source_id']] %}
                         <li>{{ loc }}</li>
