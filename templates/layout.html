@@ -8,17 +8,34 @@
 </head>
 <body>
     <header class="site-header">
-        <a href="/" class="header-logo">Home</a>
-        <form class="search-bar" action="/search" method="get">
-            <input type="text" name="q" placeholder="Search weapons..." aria-label="Search">
-            <button type="submit">🔍</button>
-        </form>
+        <div class="header-left">
+            <a href="/" class="header-logo">Home</a>
+            <nav class="header-nav">
+                <a href="{{ url_for('magic') }}" class="nav-link">Magic</a>
+                <a href="{{ url_for('melee') }}" class="nav-link">Melee</a>
+                <a href="{{ url_for('ranged') }}" class="nav-link">Ranged</a>
+                <a href="{{ url_for('hybrid') }}" class="nav-link">Hybrid</a>
+                <a href="{{ url_for('unique') }}" class="nav-link">Unique</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <form class="search-bar" action="/search" method="get">
+                <input type="text" name="q" placeholder="Search weapons..." aria-label="Search" maxlength="40">
+                <button type="submit">🔍</button>
+            </form>
+        </div>
     </header>
     <main>
         {% block content %}{% endblock %}
     </main>
     <footer class="site-footer">
-        <p>&copy; 2025 Weapons of the Frontier - Created by Skon</p>
+        <p>
+            &copy; 2025 Weapons of the Frontier - Created by Skon
+            <br>
+            Contact:<a href="mailto:weringing@gmail.com">weringing@gmail.com</a>
+            <br>
+            Data and images credited to the<a href="https://fantastic-frontier-roblox.fandom.com/wiki/Fantastic_Frontier_-_Roblox_Wiki" target="_blank" rel="noopener">Fantastic Frontier Wiki</a>
+        </p>
     </footer>
 </body>
 </html>

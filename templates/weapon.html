@@ -19,21 +19,22 @@
           </div>
         </div>
         <div class="weapon-section">
+          <h3>Description:</h3>  
           <p>{{ weapon['description'] }}</p>
         </div>
         {% if scaling %}
           <div class="weapon-section">
-            <h3>Scaling</h3>
+            <h3>Scaling:</h3>
             <ul>
               {% for s in scaling %}
-                <li>{{ s['class_name'] }}: {{ s['scaling'] }}</li>
+                <li>{{ s['class_name'] }}: {{ s['scaling'] }}%</li>
               {% endfor %}
             </ul>
           </div>
         {% endif %}
         {% if abilities %}
           <div class="weapon-section">
-            <h3>Special Abilities</h3>
+            <h3>Special Ability:</h3>
             <ul>
               {% for ab in abilities %}
                 <li>
@@ -42,7 +43,7 @@
                   {% if ability_scalings[ab['ability_id']] %}
                     <ul>
                       {% for sc in ability_scalings[ab['ability_id']] %}
-                        <li>Ability Scaling: {{ sc['class_name'] }}: {{ sc['scaling'] }}</li>
+                        <li>Ability Scaling: {{ sc['scaling'] }}%  {{ sc['class_name'] }}</li>
                       {% endfor %}
                     </ul>
                   {% endif %}
@@ -53,7 +54,7 @@
         {% endif %}
         {% if sources %}
           <div class="weapon-section">
-            <h3>Sources</h3>
+            <h3>Source(s):</h3>
             <ul>
               {% for src in sources %}
                 <li>
@@ -77,6 +78,5 @@
     {% else %}
       <p>Weapon data not found.</p>
     {% endif %}
-    <a href="/" class="weapon-button">Back to Home</a>
   </div>
 {% endblock %}
