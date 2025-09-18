@@ -1,6 +1,6 @@
 ''' This is the routes file for my weapons website. '''
 import sqlite3
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, request
 import os
 from urllib.parse import unquote
 
@@ -189,6 +189,25 @@ def weapon(weapon_name):
         source_locations=source_locations
     )
 
+
+@app.route('/search', methods=['GET'])
+def search():
+    query = (g.get('search_query') or '').strip() if hasattr(g, 'search_query') else ''
+    if not query:
+        query = (request.args.get('q') or '').strip()
+    if not query:
+        return render_template('search_results.html', query='', results=[])
+
+    db = get_db()
+    db.row_factory = sqlite3.Row
+    cur = db.cursor()
+    cur.execute("""
+        SELECT * FROM weapons
+        WHERE name LIKE ?
+        ORDER BY name ASC
+    """, (f'%{query}%',))
+    results = cur.fetchall()
+    return render_template('search_results.html', query=query, results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)

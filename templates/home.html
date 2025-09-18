@@ -1,21 +1,27 @@
-<!-- templates/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Fantastic Frontier Weapons</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
   <div class="container">
-    <h1>Weapons Of The Frontier</h1>
-    <div class="button-grid">
-      <a href="/magic" class="weapon-button blue">Magic</a>
-      <a href="/melee" class="weapon-button red">Melee</a>
-      <a href="/ranged" class="weapon-button yellow">Ranged</a>
-      <a href="/hybrid" class="weapon-button blue, red, yellow">Hybrid</a>
-      <a href="/unique" class="weapon-button green">Unique</a>
-    </div>
+    <section class="about-section">
+      <h2>Welcome to Weapons of the Frontier!</h2>
+      <p>
+        Explore a comprehensive database of all weapons in the Frontier universe!  
+        Browse by weapon type using the buttons below, or search for your favorite weapon.
+      </p>
+      <div class="button-grid">
+        <a href="{{ url_for('magic') }}" class="weapon-button large">Magic</a>
+        <a href="{{ url_for('melee') }}" class="weapon-button large">Melee</a>
+        <a href="{{ url_for('ranged') }}" class="weapon-button large">Ranged</a>
+        <a href="{{ url_for('hybrid') }}" class="weapon-button large">Hybrid</a>
+        <a href="{{ url_for('unique') }}" class="weapon-button large">Unique</a>
+      </div>
+      <h3>About This Site</h3>
+      <p>
+        This project is about the weapons in the game, ‘Fantastic Frontier’. This website is for fantastic frontier players of all levels looking to understand weapons better or to compare different weapons to optimize their builds.
+      </p>
+      <p>
+        Use the search bar or the buttons above to get started!
+      </p>
+    </section>
   </div>
-</body>
-</html>
+{% endblock %}

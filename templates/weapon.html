@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ weapon_name }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends "layout.html" %}
+{% block title %}{{ weapon_name }}{% endblock %}
+{% block content %}
   <div class="container">
-    <h1>{{ weapon_name }}</h1>
     {% if weapon %}
       <div class="weapon-detail-card">
         <div class="weapon-detail-header">
@@ -85,5 +79,4 @@
     {% endif %}
     <a href="/" class="weapon-button">Back to Home</a>
   </div>
-</body>
-</html>
+{% endblock %}

@@ -1,6 +1,32 @@
 /* static/css/style.css */
 
 
+p {
+  font-size: 1.1rem;
+}
+
+
+.about-section {
+  background: rgba(40, 40, 60, 0.85);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  margin: 2rem auto 4rem auto;
+  max-width: 600px;
+  color: #eee;
+  box-shadow: 0 2px 12px rgba(24, 24, 32, 0.98);
+}
+
+
+.about-section h2 {
+  color: #ffd700;
+}
+
+
+.about-section h3 {
+  color: #ffd700;
+}
+
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -19,7 +45,7 @@ body {
 
 .container {
   text-align: center;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
@@ -34,27 +60,39 @@ h1 {
 
 .button-grid {
   display: flex;
-  gap: 5rem;
+  gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 2.5rem 0 2rem 0;
+  width: 100%;
 }
 
-
-.weapon-button {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  color: white;
-  background: linear-gradient(135deg, #7b2ff7, #f107a3);
-  border: none;
+.weapon-button.large {
+  flex: 1 1 220px;
+  max-width: 320px;
+  min-width: 180px;
+  font-size: 1.5rem;
+  padding: 2rem 0;
   border-radius: 12px;
+  margin: 0;
+  background: #222;
+  color: #ffd700;
+  font-weight: bold;
+  border: 3px solid #ffd700;
   text-decoration: none;
-  transition: transform 0.2s ease;
+  text-align: center;
+  transition: 
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s,
+    transform 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
 }
 
-
-.weapon-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+.weapon-button.large:hover, .weapon-button.large:focus {
+  border-color: #fffbe6;
+  transform: scale(1.04);
 }
 
 
@@ -143,6 +181,112 @@ h1 {
 .weapon-section ul {
   margin: 0 0 0 1.2rem;
   padding: 0;
+}
+
+
+.site-header {
+  width: 100%;
+  background: rgba(24, 24, 32, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+
+
+.header-nav {
+  display: flex;
+  gap: 1.2rem;
+}
+
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+
+.nav-link:hover {
+  color: #ffd700;
+}
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #222;
+  border-radius: 8px;
+  padding: 0.2rem 0.6rem;
+  margin-right: 2rem;
+}
+
+
+.search-bar input[type="text"] {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.6rem;
+  outline: none;
+  font-size: 1rem;
+}
+
+
+.search-bar button {
+  background: none;
+  border: none;
+  color: #ffd700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.3rem;
+}
+
+
+.site-footer {
+  width: 100%;
+  background: rgba(24, 24, 32, 0.98);
+  color: #bbb;
+  text-align: center;
+  padding: 1.2rem 0 0.7rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 1rem;
+  z-index: 100;
+}
+
+
+.site-footer a {
+  color: #ffd700;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+
+main {
+  margin-top: 80px;
+  margin-bottom: 70px;
 }
 
 

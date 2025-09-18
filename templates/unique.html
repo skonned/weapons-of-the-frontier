@@ -1,12 +1,7 @@
 <!-- templates/unique.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Unique Weapons</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+{% extends "layout.html" %}
+{% block title %}{{ weapon_name }}{% endblock %}
+{% block content %}
   <div class="container">
     <h1>Unique Weapons</h1>
     <ul class="weapon-list">
@@ -25,7 +20,5 @@
         </li>
       {% endfor %}
     </ul>
-    <a href="/" class="weapon-button">Back to Home</a>
   </div>
-</body>
-</html>
+{% endblock %}

@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}Weapons of the Frontier{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    
+    <header class="site-header">
+        <a href="/" class="header-logo">Home</a>
+        <form class="search-bar" action="/search" method="get">
+            <input type="text" name="q" placeholder="Search weapons..." aria-label="Search">
+            <button type="submit">🔍</button>
+        </form>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <p>&copy; 2025 Weapons of the Frontier - Created by Skon</p>
+    </footer>
 </body>
 </html>
