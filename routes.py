@@ -131,23 +131,62 @@ def unique():
 @app.route('/weapon/<weapon_name>')
 def weapon(weapon_name):
     display_name = unquote(weapon_name).replace('_', ' ')
-    cur = get_db().cursor()
+    db = get_db()
+    db.row_factory = sqlite3.Row
+    cur = db.cursor()
+    # Get main weapon data
     cur.execute("SELECT * FROM weapons WHERE name = ?", (display_name,))
-    row = cur.fetchone()
-    if row:
-        weapon_data = {
-            "name": row[0],
-            "image": row[1],
-            "type": row[2],
-            "description": row[3],
-            "damage": row[4]
-        }
-    else:
-        weapon_data = None
+    weapon = cur.fetchone()
+    if not weapon:
+        return render_template('weapon.html', weapon_name=display_name, weapon=None)
+
+    # Get weapon scaling
+    cur.execute("SELECT class_name, scaling FROM weapon_scaling WHERE weapon_id = ?", (weapon['weapon_id'],))
+    scaling = cur.fetchall()
+
+    # Get special abilities
+    cur.execute("SELECT * FROM special_abilities WHERE weapon_id = ?", (weapon['weapon_id'],))
+    abilities = cur.fetchall()
+
+    # For each ability, get its scaling
+    ability_scalings = {}
+    for ability in abilities:
+        cur.execute(
+            "SELECT class_name, scaling FROM special_ability_scaling WHERE ability_id = ? AND weapon_id = ?",
+            (ability['ability_id'], weapon['weapon_id'])
+        )
+        ability_scalings[ability['ability_id']] = cur.fetchall()
+
+    # Get sources and their locations
+    cur.execute("""
+        SELECT s.source_id, s.name, ws.price, ws.drop_chance
+        FROM sources s
+        JOIN weapon_sources ws ON s.source_id = ws.source_id
+        WHERE ws.weapon_id = ?
+    """, (weapon['weapon_id'],))
+    sources = cur.fetchall()
+
+    # For each source, get locations
+    source_locations = {}
+    for source in sources:
+        cur.execute("""
+            SELECT l.name
+            FROM locations l
+            JOIN source_locations sl ON l.location_id = sl.location_id
+            WHERE sl.source_id = ?
+        """, (source['source_id'],))
+        source_locations[source['source_id']] = [row['name'] for row in cur.fetchall()]
+
+    # Pass all data to template
     return render_template(
         'weapon.html',
         weapon_name=display_name,
-        weapon=weapon_data
+        weapon=weapon,
+        scaling=scaling,
+        abilities=abilities,
+        ability_scalings=ability_scalings,
+        sources=sources,
+        source_locations=source_locations
     )
 
 

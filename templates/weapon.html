@@ -9,14 +9,77 @@
   <div class="container">
     <h1>{{ weapon_name }}</h1>
     {% if weapon %}
-      <img src="{{ url_for('static', filename='images/' ~ weapon.type|lower ~ '/' ~ weapon.image) }}"
-           alt="{{ weapon.name }}"
-           class="weapon-image"
-           width="200">
-      <p><strong>Class:</strong> {{ weapon.type }}</p>
-      <p><strong>Damage:</strong> {{ weapon.damage }}</p>
-      <p><strong>Type:</strong> {{ weapon.class }} </p>
-      <p>{{ weapon.description }}</p>
+      <div class="weapon-detail-card">
+        <div class="weapon-detail-header">
+          <img src="{{ url_for('static', filename='images/' ~ weapon['type']|lower ~ '/' ~ weapon['image']) }}" alt="{{ weapon['name'] }}" class="weapon-image">
+          <div class="weapon-detail-info">
+            <h2>{{ weapon['name'] }}</h2>
+            <p><strong>Class:</strong> {{ weapon['class'] }}</p>
+            <p><strong>Type:</strong> {{ weapon['type'] }}</p>
+            <p><strong>Damage:</strong> {{ weapon['damage'] }}</p>
+            <p><strong>Stamina Usage:</strong> {{ weapon['stamina_usage'] }}</p>
+            <p><strong>Selling Price:</strong> {{ weapon['selling_price'] }}</p>
+            {% if weapon['additional_stat'] %}
+              <p><strong>Additional Stat:</strong> {{ weapon['additional_stat'] }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="weapon-section">
+          <p>{{ weapon['description'] }}</p>
+        </div>
+        {% if scaling %}
+          <div class="weapon-section">
+            <h3>Scaling</h3>
+            <ul>
+              {% for s in scaling %}
+                <li>{{ s['class_name'] }}: {{ s['scaling'] }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        {% if abilities %}
+          <div class="weapon-section">
+            <h3>Special Abilities</h3>
+            <ul>
+              {% for ab in abilities %}
+                <li>
+                  <strong>{{ ab['name'] }}</strong> (Damage: {{ ab['damage'] }}, Stamina: {{ ab['stamina_usage'] }}, Cooldown: {{ ab['cooldown'] }})<br>
+                  {{ ab['description'] }}
+                  {% if ability_scalings[ab['ability_id']] %}
+                    <ul>
+                      {% for sc in ability_scalings[ab['ability_id']] %}
+                        <li>Ability Scaling: {{ sc['class_name'] }}: {{ sc['scaling'] }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        {% if sources %}
+          <div class="weapon-section">
+            <h3>Sources</h3>
+            <ul>
+              {% for src in sources %}
+                <li>
+                  <strong>{{ src['name'] }}</strong>
+                  {% if src['price'] %} (Price: {{ src['price'] }}){% endif %}
+                  {% if src['drop_chance'] %} (Drop Chance: {{ src['drop_chance'] }}%) {% endif %}
+                  {% if source_locations[src['source_id']] %}
+                    <br>Locations:
+                    <ul>
+                      {% for loc in source_locations[src['source_id']] %}
+                        <li>{{ loc }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
     {% else %}
       <p>Weapon data not found.</p>
     {% endif %}
